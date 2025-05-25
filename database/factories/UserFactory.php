@@ -41,4 +41,18 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    public function admin() {
+        return $this->state(fn(array $attrs)=>[
+            'email' => 'admin@example.com',
+            'password' => bcrypt('admin123'),
+        ]);
+    }
+
+    public function importer() {
+        return $this->state(fn(array $attrs)=>[
+            'email' => 'importer@example.com',
+            'password' => bcrypt('importer123'),
+        ]);
+    }
 }
