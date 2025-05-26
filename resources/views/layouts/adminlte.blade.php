@@ -43,9 +43,10 @@
   <!-- Bootstrap JS -->
   <script src="{{ asset('vendor/adminlte/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
   <!-- AdminLTE App -->
-  <script src="{{ asset('vendor/adminlte/dist/js/app.min.js') }}"></script>
+  <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
 
   <!-- Vite (your other app JS) -->
   @vite('resources/js/app.js')
+  @stack('scripts')
 </body>
 </html>

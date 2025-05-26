@@ -24,3 +24,7 @@ Homestead.json
 
 /.idea/
 /.vscode/
+
+
+# Ignore all vendor-published front-end assets
+/public/vendor/
