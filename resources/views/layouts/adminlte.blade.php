@@ -26,14 +26,9 @@
 
     <!-- Sidebar -->
     <aside class="main-sidebar">
-      <section class="sidebar">
-        <ul class="sidebar-menu">
-          <li class="header">HEADER</li>
-          <li class="active">
-            <a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a>
-          </li>
-        </ul>
-      </section>
+    <section class="sidebar">
+        @include('partials.sidebar')
+    </section>
     </aside>
 
     <!-- Content Wrapper -->
