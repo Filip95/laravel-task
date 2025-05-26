@@ -16,6 +16,7 @@ class PermissionSeeder extends Seeder
     {
          $permissions = [
             'user-management',
+            'import-data',
             'import-orders',
             'import-customers',
             'import-invoices',
@@ -30,6 +31,7 @@ class PermissionSeeder extends Seeder
 
         $importer = Role::findOrCreate('importer');
         $importer->syncPermissions([
+            'import-data',
             'import-orders',
             'import-customers',
             'import-invoices',

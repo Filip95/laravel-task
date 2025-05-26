@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ImportController;
+
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -23,6 +25,15 @@ Route::middleware(['auth', 'permission:user-management'])->group(function(){
     Route::resource('users', UserController::class);
     Route::resource('permissions', PermissionController::class);
 });
+
+Route::middleware(['auth','permission:import-data'])->group(function () {
+    Route::get('import',  [ImportController::class, 'showForm'])
+         ->name('import.form');
+
+    Route::post('import', [ImportController::class, 'handle'])
+         ->name('import.handle');
+});
+
 
 Route::get('/adminlte-test', function () {
     return view('adminlte-test');
