@@ -2,50 +2,52 @@
 
 return [
     'orders' => [
-        'label' => 'Import Orders',
-        'permission' => 'import-orders',
-        'files' => ['orders.xslx'],
-        'headers_to_db' => [
-            'OrderID' => 'order_id',
-            'CustomerName' => 'customer_name',
-            'Amount' => 'amount',
+        'label'            => 'Import Orders',
+        'permission'       => 'import-orders',
+        'files'            => ['orders.xlsx', 'orders.csv'],
+        'headers_to_db'    => [
+            'orderid'      => 'order_id',
+            'customername' => 'customer_name',
+            'amount'       => 'amount',
         ],
-        'validation' => [
-            'OrderID' => ['required', 'unique:orders,order_id'],
-            'CustomerName' => ['required', 'string'],
-            'Amount' => ['required', 'numeric'],
+        'validation'       => [
+            'orderid'      => ['required', 'unique:orders,order_id'],
+            'customername' => ['required', 'string'],
+            'amount'       => ['required', 'numeric'],
         ],
         'update_or_create' => ['match' => ['order_id']],
     ],
+
     'customers' => [
         'label'            => 'Import Customers',
         'permission'       => 'import-customers',
-        'files'            => ['customers.xlsx'],
+        'files'            => ['customers.xlsx', 'customers.csv'],
         'headers_to_db'    => [
-            'CustomerID'   => 'customer_id',
-            'Name'         => 'name',
-            'Email'        => 'email',
+            'customerid'   => 'customer_id',
+            'name'         => 'name',
+            'email'        => 'email',
         ],
         'validation'       => [
-            'CustomerID'   => ['required','unique:customers,customer_id'],
-            'Name'         => ['required','string'],
-            'Email'        => ['required','email','unique:customers,email'],
+            'customerid'   => ['required', 'unique:customers,customer_id'],
+            'name'         => ['required', 'string'],
+            'email'        => ['required', 'email', 'unique:customers,email'],
         ],
         'update_or_create' => ['match' => ['customer_id']],
     ],
+
     'invoices' => [
         'label'            => 'Import Invoices',
         'permission'       => 'import-invoices',
-        'files'            => ['invoices_part1.csv','invoices_part2.csv'],
+        'files'            => ['invoices_part1.csv', 'invoices_part2.csv', 'invoices.xlsx'],
         'headers_to_db'    => [
-            'InvoiceID'    => 'invoice_id',
-            'OrderID'      => 'order_id',
-            'Total'        => 'total',
+            'invoiceid'    => 'invoice_id',
+            'orderid'      => 'order_id',
+            'total'        => 'total',
         ],
         'validation'       => [
-            'InvoiceID'    => ['required','unique:invoices,invoice_id'],
-            'OrderID'      => ['required','exists:orders,order_id'],
-            'Total'        => ['required','numeric'],
+            'invoiceid'    => ['required', 'unique:invoices,invoice_id'],
+            'orderid'      => ['required', 'exists:orders,order_id'],
+            'total'        => ['required', 'numeric'],
         ],
         'update_or_create' => ['match' => ['invoice_id']],
     ],
